@@ -30,7 +30,7 @@
     </style>
     <script>
       grist.ready({
-        columns: ["XP","Level","Score"]
+        columns: ["XP","Level","Score"] 
       });
       grist.onRecord(function(record) {
 
@@ -40,11 +40,12 @@
         const Level = mapped.Level;
         const XP = mapped.XP;
         const Score = mapped.Score;
-        if (value) {
-          document.getElementById('GRIST-LEVEL').value = Level
-          document.getElementById('GRIST-XP').value = XP
-          document.getElementById('GRIST-SCORE').value = Score
-        }
+        if (Level) 
+            document.getElementById('GRIST-LEVEL').value = Level
+        if(XP)
+            document.getElementById('GRIST-XP').value = XP
+        if(Score) 
+            document.getElementById('GRIST-SCORE').value = Score
       });
     </script>
 </body>
