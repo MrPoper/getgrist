@@ -30,11 +30,9 @@
     </style>
     <script>
       grist.ready({
-        columns: ["XP","Level","Score"] 
+        columns: ["XP","Level","Score"]
       });
       grist.onRecord(function(record) {
-
-        const tokenInfo = await grist.docApi.getAccessToken({readOnly: true});
         const mapped = grist.mapColumnNames(record);
         // Get Columns Data //
         const Level = mapped.Level;
