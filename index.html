@@ -38,12 +38,9 @@
         let Level = mapped.Level;
         let XP = mapped.XP;
         let Score = mapped.Score;
-        if (Level) 
-            document.getElementById('GRIST-LEVEL').value = Level
-        if(XP)
-            document.getElementById('GRIST-XP').value = XP
-        if(Score) 
-            document.getElementById('GRIST-SCORE').value = Score
+            document.getElementById('GRIST-LEVEL').value = Level ? level : 0
+            document.getElementById('GRIST-XP').value = XP ? XP : 0
+            document.getElementById('GRIST-SCORE').value = Score ? Score : 0
       });
     </script>
 </body>
