@@ -32,15 +32,22 @@
       grist.ready({
         columns: ["XP","Level","Score"]
       });
+
+      
+      function singleColumn(record) {
+        const columns = Object.keys(record || {}).filter(k => k !== 'id');
+        return columns.length === 1 ? record[columns[0]] : undefined;
+      }
+      
       grist.onRecord(function(record) {
         const mapped = grist.mapColumnNames(record);
         // Get Columns Data //
-        let Level = mapped.Level;
-        let XP = mapped.XP;
-        let Score = mapped.Score;
-            document.getElementById('GRIST-LEVEL').value = Level ? level : 0
-            document.getElementById('GRIST-XP').value = XP ? XP : 0
-            document.getElementById('GRIST-SCORE').value = Score ? Score : 0
+        let Level = mapped ? mapped.Level : singleColumn(record);
+        let XP = mapped ? mapped.XP  : singleColumn(record);;
+        let Score = mapped ? mapped.Score  : singleColumn(record);;
+            document.getElementById('GRIST-LEVEL').value = Level
+            document.getElementById('GRIST-XP').value = XP 
+            document.getElementById('GRIST-SCORE').value = Score
       });
     </script>
 </body>
