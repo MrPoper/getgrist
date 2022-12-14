@@ -46,12 +46,9 @@
         let Level = mapped ? mapped.Level : singleColumn(record);
         let XP = mapped ? mapped.XP  : singleColumn(record);;
         let Score = mapped ? mapped.Score  : singleColumn(record);;
-        if (Level) 
-            document.getElementById('GRIST-LEVEL').innerHTML = Level
-        if(XP)
-            document.getElementById('GRIST-XP').innerHTML = XP 
-        if(Score) 
-            document.getElementById('GRIST-SCORE').innerHTML = Score
+        if (Level)  document.getElementById('GRIST-LEVEL').innerHTML = Level ;
+        if(XP) document.getElementById('GRIST-XP').innerHTML = XP ;
+        if(Score)  document.getElementById('GRIST-SCORE').innerHTML = Score ;
       });
     </script>
 </body>
