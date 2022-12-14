@@ -30,7 +30,8 @@
     </style>
     <script>
       grist.ready({
-        columns: ["XP","Level","Score"]
+        columns: ["XP","Level","Score"],
+        requiredAccess: 'read table'
       });
 
       
@@ -45,12 +46,12 @@
         let Level = mapped ? mapped.Level : singleColumn(record);
         let XP = mapped ? mapped.XP  : singleColumn(record);;
         let Score = mapped ? mapped.Score  : singleColumn(record);;
-        console.log(Level)
-        console.log(XP)
-        console.log(Score)
-            document.getElementById('GRIST-LEVEL').value = Level
-            document.getElementById('GRIST-XP').value = XP 
-            document.getElementById('GRIST-SCORE').value = Score
+        if (Level) 
+            document.getElementById('GRIST-LEVEL').innerHTML = Level
+        if(XP)
+            document.getElementById('GRIST-XP').innerHTML = XP 
+        if(Score) 
+            document.getElementById('GRIST-SCORE').innerHTML = Score
       });
     </script>
 </body>
