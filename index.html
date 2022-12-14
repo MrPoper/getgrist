@@ -35,9 +35,9 @@
       grist.onRecord(function(record) {
         const mapped = grist.mapColumnNames(record);
         // Get Columns Data //
-        const Level = mapped.Level;
-        const XP = mapped.XP;
-        const Score = mapped.Score;
+        let Level = mapped.Level;
+        let XP = mapped.XP;
+        let Score = mapped.Score;
         if (Level) 
             document.getElementById('GRIST-LEVEL').value = Level
         if(XP)
