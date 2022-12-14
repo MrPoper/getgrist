@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://docs.getgrist.com/grist-plugin-api.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -12,11 +13,11 @@
         <div class="bar">
             <div class="info">
                 <div class="side">
-                    <span class="level">Level 1</span>
-                    <span class="xp">200/500</span>
+                    <span class="level">Level <span id="GRIST-LEVEL"></span></span>
+                    <span class="xp"><span id="GRIST-XP"></span>/500</span>
                 </div>
                 <div class="side">
-                    <span class="score">100$</span>
+                    <span class="score"><span id="GRIST-SCORE"></span>$</span>
                 </div>
             </div>
             <div class="progress-line">
@@ -27,5 +28,24 @@
     <style>
         /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap'); */
     </style>
+    <script>
+      grist.ready({
+        columns: ["XP","Level","Score"]
+      });
+      grist.onRecord(function(record) {
+
+        const tokenInfo = await grist.docApi.getAccessToken({readOnly: true});
+        const mapped = grist.mapColumnNames(record);
+        // Get Columns Data //
+        const Level = mapped.Level;
+        const XP = mapped.XP;
+        const Score = mapped.Score;
+        if (value) {
+          document.getElementById('GRIST-LEVEL').value = Level
+          document.getElementById('GRIST-XP').value = XP
+          document.getElementById('GRIST-SCORE').value = Score
+        }
+      });
+    </script>
 </body>
 </html>
