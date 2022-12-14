@@ -43,12 +43,12 @@
       grist.onRecord(function(record) {
         const mapped = grist.mapColumnNames(record);
         // Get Columns Data //
-        let Level = mapped ? mapped.Level : singleColumn(record);
-        let XP = mapped ? mapped.XP  : singleColumn(record);;
-        let Score = mapped ? mapped.Score  : singleColumn(record);;
-        if (Level)  document.getElementById('GRIST-LEVEL').innerHTML = Level ;
-        if(XP) document.getElementById('GRIST-XP').innerHTML = XP ;
-        if(Score)  document.getElementById('GRIST-SCORE').innerHTML = Score ;
+        let Level = mapped.Level;
+        let XP = mapped.XP;
+        let Score = mapped.Score;
+        if (Level)  document.getElementById('GRIST-LEVEL').innerHTML = Level.toString() ;
+        if (XP) document.getElementById('GRIST-XP').innerHTML = XP.toString() ;
+        if (Score)  document.getElementById('GRIST-SCORE').innerHTML = Score.toString() ;
       });
     </script>
 </body>
