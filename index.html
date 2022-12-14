@@ -46,9 +46,9 @@
         let Level = mapped ? mapped.Level : singleColumn(record);
         let XP = mapped ? mapped.XP  : singleColumn(record);;
         let Score = mapped ? mapped.Score  : singleColumn(record);;
-        if (Level)  document.getElementById('GRIST-LEVEL').innerHTML = Level.toString() ;
-        if (XP) document.getElementById('GRIST-XP').innerHTML = XP.toString() ;
-        if (Score)  document.getElementById('GRIST-SCORE').innerHTML = Score.toString() ;
+        if (Level)  document.getElementById('GRIST-LEVEL').innerHTML = Level.toString() == 0 ? "0" : Level.toString();
+        if (XP) document.getElementById('GRIST-XP').innerHTML = XP.toString() == 0 ? "0" : XP.toString();
+        if (Score)  document.getElementById('GRIST-SCORE').innerHTML = Score.toString()  == 0 ? "0" : Score.toString();
       });
     </script>
 </body>
