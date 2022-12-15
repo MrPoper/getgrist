@@ -14,7 +14,7 @@
             <div class="info">
                 <div class="side">
                     <span class="level">Level <span id="GRIST-LEVEL"></span></span>
-                    <span class="xp"><span id="GRIST-XP"></span>/500</span>
+                    <span class="xp"><span id="GRIST-XP"></span>/<span id="GRIST-NEXT-LEVEL"></span></span>
                 </div>
                 <div class="side">
                     <span class="score"><span id="GRIST-SCORE"></span>$</span>
@@ -30,7 +30,7 @@
     </style>
     <script>
       grist.ready({
-        columns: ["XP","Level","Score"],
+        columns: ["XP","Level","Score",'Next_Level'],
         requiredAccess: 'read table'
       });
 
@@ -44,11 +44,18 @@
         const mapped = grist.mapColumnNames(record);
         // Get Columns Data //
         let Level = mapped ? mapped.Level : singleColumn(record);
-        let XP = mapped ? mapped.XP  : singleColumn(record);;
-        let Score = mapped ? mapped.Score  : singleColumn(record);;
         if (Level)  document.getElementById('GRIST-LEVEL').innerHTML = Level.toString() == 0 ? "0" : Level.toString();
+
+        let Next_Level = mapped ? mapped.Next_Level  : singleColumn(record);;
+        if (Next_Level)  document.getElementById('GRIST-NEXT-LEVEL').innerHTML = Next_Level.toString() == 0 ? "0" : Next_Level.toString();
+
+
+        let XP = mapped ? mapped.XP  : singleColumn(record);;
         if (XP) document.getElementById('GRIST-XP').innerHTML = XP.toString() == 0 ? "0" : XP.toString();
+
+        let Score = mapped ? mapped.Score  : singleColumn(record);;
         if (Score)  document.getElementById('GRIST-SCORE').innerHTML = Score.toString()  == 0 ? "0" : Score.toString();
+
       });
     </script>
 </body>
