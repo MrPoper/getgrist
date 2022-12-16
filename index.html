@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="progress-line">
-                <span style="width:40%"></span>
+                <span id="GRIST-PROGRESS"></span>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
     </style>
     <script>
       grist.ready({
-        columns: ["XP","Level","Score",'Next_Level'],
+        columns: ["XP","Level","Score",'Next_Level','Progress'],
         requiredAccess: 'read table'
       });
 
@@ -55,6 +55,9 @@
 
         let Score = mapped ? mapped.Score  : singleColumn(record);;
         if (Score)  document.getElementById('GRIST-SCORE').innerHTML = Score.toString()  == 0 ? "0" : Score.toString();
+
+        let Progress = mapped ? mapped.Progress  : singleColumn(record);;
+        if (Progress)  document.getElementById('GRIST-PROGRESS').style.width = Progress.toString() == 0 ? "0%" : Progress.toString();
 
       });
     </script>
